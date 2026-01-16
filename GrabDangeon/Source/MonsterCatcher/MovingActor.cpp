@@ -2,7 +2,7 @@
 
 
 #include "MovingActor.h"
-#include "TimerManager.h" // ★絶対必要
+#include "TimerManager.h" // 絶対必要
 
 // Sets default values
 AMovingActor::AMovingActor()
@@ -53,7 +53,7 @@ void AMovingActor::Tick(float DeltaTime)
 			CurrentLocation = TargetLocation;
 			bGoingForward = false;
 
-			// ★停止開始
+			// 停止開始
 			StartWait();
 		}
 	}
@@ -67,7 +67,7 @@ void AMovingActor::Tick(float DeltaTime)
 			CurrentLocation = StartLocation;
 			bGoingForward = true;
 
-			// ★停止開始
+			// 停止開始
 			StartWait();
 		}
 

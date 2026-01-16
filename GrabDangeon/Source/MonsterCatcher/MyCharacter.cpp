@@ -3,6 +3,7 @@
 
 #include "MyCharacter.h"
 #include "GimmickActor.h"
+#include "AttractFloorActor.h"
 #include "UI_UserWidget.h"
 #include "Camera/CameraComponent.h"
 #include "Camera/PlayerCameraManager.h"
@@ -293,25 +294,55 @@ void AMyCharacter::Tick(float DeltaTime)
 						else if (GimmickClass->isSpawnDest)
 							GimmickClass->StartGimmick();
 					}
+					/*else if (AAttractFloorActor* GimmickClass = Cast<AAttractFloorActor>(HitActor))
+					{
+						GimmickClass->StartAttract();
+					}*/
 				}
+
+				bIsFiringGrapple = false;
+				GrappleCable->SetVisibility(false);
+				if (GrappleAnchor)
+				{
+					GrappleAnchor->DestroyComponent();
+					GrappleAnchor = nullptr;
+				}
+
+				gHit = false;            // 天井にヒットしていない扱いに
+				bHit = false;            // 天井にヒットしていない扱いに
+				return;                         // ★ここで処理終了が重要！
+
 			}
 			if (gHit && !bHasHitTarget)
 			{
-
 				GrappleCable->SetWorldLocation(CableStart);
 
-				GrappleAnchor->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-
 				bHasHitTarget = true;
-				GrabPoint = GraHit.ImpactPoint;
-				GrappleAnchor->SetWorldLocation(GrabPoint);
-
-				TargetCableLength = FVector::Distance(GrappleStart, GrabPoint);
-				CurrentCableLength = TargetCableLength; // ピッタリの長さで固定
-
 				bIsFiringGrapple = false;
 				isGrappling = true;
 
+				// ヒットしたコンポーネント
+				USceneComponent* HitComp = GraHit.GetComponent();
+
+				if (HitComp && GrappleAnchor)
+				{
+					// いったんワールド位置を合わせる
+					GrappleAnchor->SetWorldLocation(GraHit.ImpactPoint);
+
+					// ★ここが核心：天井にアタッチ
+					GrappleAnchor->AttachToComponent(
+						HitComp,
+						FAttachmentTransformRules::KeepWorldTransform
+					);
+				}
+
+				// 初期ロープ長
+				CurrentCableLength = FVector::Distance(
+					GetActorLocation(),
+					GrappleAnchor->GetComponentLocation()
+				);
+
+				TargetCableLength = CurrentCableLength;
 				//UE_LOG(LogTemp, Warning, TEXT("Grapple Hit: %s"), *GrabPoint.ToString());
 			}
 
@@ -349,11 +380,12 @@ void AMyCharacter::Tick(float DeltaTime)
 			);
 
 			FVector ActorLoc = GetActorLocation();
-			FVector ToAnchor = GrabPoint - ActorLoc;
+			FVector AnchorLoc = GrappleAnchor->GetComponentLocation();
+			FVector ToAnchor = AnchorLoc - ActorLoc;
 			float DistanceToAnchor = ToAnchor.Size();
 			FVector RopeDir = ToAnchor.GetSafeNormal();
 
-			FVector CorrectedPos = GrabPoint - RopeDir * CurrentCableLength;
+			FVector CorrectedPos = AnchorLoc - RopeDir * CurrentCableLength;
 			FVector Correction = CorrectedPos - ActorLoc;
 
 			GetCharacterMovement()->AddForce(Correction * 900.f);
