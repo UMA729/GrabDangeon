@@ -294,10 +294,10 @@ void AMyCharacter::Tick(float DeltaTime)
 						else if (GimmickClass->isSpawnDest)
 							GimmickClass->StartGimmick();
 					}
-					/*else if (AAttractFloorActor* GimmickClass = Cast<AAttractFloorActor>(HitActor))
+					else if (AAttractFloorActor* AttractClass = Cast<AAttractFloorActor>(HitActor))
 					{
-						GimmickClass->StartAttract();
-					}*/
+						AttractClass->StartAttract();
+					}
 				}
 
 				bIsFiringGrapple = false;

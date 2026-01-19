@@ -62,10 +62,11 @@ void AAttractFloorActor::Tick(float DeltaTime)
 			EndLocation = false;
 
 			isMoving = false;
+
 		}
 	}
 
-	SetActorLocation(CurrentLocation);
+	SetActorLocation(CurrentLocation,true);
 	
 }
 
