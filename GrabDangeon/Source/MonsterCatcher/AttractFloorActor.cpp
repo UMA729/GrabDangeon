@@ -17,6 +17,11 @@ AAttractFloorActor::AAttractFloorActor()
 	AttractObj->SetupAttachment(AttractHandle);
 
 	move_speed = 100.0f;
+
+	// ƒvƒŒƒCƒ„[‚ðæ‚¹‚Ä‚àŠŠ‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	AttractObj->SetMobility(EComponentMobility::Movable);
+	AttractObj->SetSimulatePhysics(false);
+	AttractObj->SetEnableGravity(false);
 }
 
 // Called when the game starts or when spawned
