@@ -13,18 +13,21 @@ UCLASS()
 class MONSTERCATCHER_API AInGameHUD : public AHUD
 {
 	GENERATED_BODY()
-	
+
+protected:
+	virtual void BeginPlay() override;
+
 public:
-	// Pauseƒƒjƒ…[‚Ì•\¦/”ñ•\¦
+	// Pauseï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Ì•\ï¿½ï¿½/ï¿½ï¿½\ï¿½ï¿½
 	void DispPause(bool IsPause);
 
-	// Level‚ğŠJ‚­
+	// Levelï¿½ï¿½Jï¿½ï¿½
 	void OpenLevel(FName LevelName);
 
-	// Game‚ğI—¹‚·‚é
+	// Gameï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void QuitGame();
 
 private:
-	// PauseWidget‚ğ•Û‚·‚é•Ï”
+	// PauseWidgetï¿½ï¿½Ûï¿½ï¿½ï¿½ï¿½ï¿½Ïï¿½
 	UUserWidget* PauseWidget;
 };

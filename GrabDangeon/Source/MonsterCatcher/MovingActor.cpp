@@ -2,7 +2,7 @@
 
 
 #include "MovingActor.h"
-#include "TimerManager.h" // â‘Î•K—v
+#include "TimerManager.h" // ï¿½ï¿½Î•Kï¿½v
 
 // Sets default values
 AMovingActor::AMovingActor()
@@ -13,7 +13,7 @@ AMovingActor::AMovingActor()
 	PlatformMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlatformMesh"));
 	SetRootComponent(PlatformMesh);
 
-	// ƒvƒŒƒCƒ„[‚ğæ‚¹‚Ä‚àŠŠ‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½æ‚¹ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
 	PlatformMesh->SetMobility(EComponentMobility::Movable);
 	PlatformMesh->SetSimulatePhysics(false);
 	PlatformMesh->SetEnableGravity(false);
@@ -34,7 +34,7 @@ void AMovingActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 
-	// ’â~’†‚È‚ç“®‚©‚³‚È‚¢
+	// ï¿½ï¿½~ï¿½ï¿½ï¿½È‚ç“®ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
 	if (bIsWaiting) return;
 
 
@@ -42,7 +42,7 @@ void AMovingActor::Tick(float DeltaTime)
 	FVector WorldMoveOffset = GetActorTransform().TransformVector(MoveOffset);
 	FVector TargetLocation = StartLocation + WorldMoveOffset;
 
-	// ˆÚ“®•ûŒü”»’è
+	// ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (bGoingForward)
 	{
 		FVector MoveDir = WorldMoveOffset.GetSafeNormal();
@@ -53,7 +53,7 @@ void AMovingActor::Tick(float DeltaTime)
 			CurrentLocation = TargetLocation;
 			bGoingForward = false;
 
-			// ’â~ŠJn
+			// ï¿½ï¿½~ï¿½Jï¿½n
 			StartWait();
 		}
 	}
@@ -67,7 +67,7 @@ void AMovingActor::Tick(float DeltaTime)
 			CurrentLocation = StartLocation;
 			bGoingForward = true;
 
-			// ’â~ŠJn
+			// ï¿½ï¿½~ï¿½Jï¿½n
 			StartWait();
 		}
 

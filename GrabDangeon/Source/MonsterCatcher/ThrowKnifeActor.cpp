@@ -17,15 +17,15 @@ AThrowKnifeActor::AThrowKnifeActor()
 	KunaiCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	KunaiCollision->SetCollisionObjectType(ECC_WorldDynamic);
 
-	// Hit ‚ðŽg‚¤‚½‚ß Pawn ‚ð Block ‚É‚·‚éiOverlap ‚Å‚Í Hit ‚Ío‚È‚¢j
+	// Hit ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Pawn ï¿½ï¿½ Block ï¿½É‚ï¿½ï¿½ï¿½iOverlap ï¿½Å‚ï¿½ Hit ï¿½Íoï¿½È‚ï¿½ï¿½j
 	KunaiCollision->SetCollisionResponseToAllChannels(ECR_Ignore);
 	KunaiCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Block);
 	KunaiCollision->SetCollisionResponseToChannel(ECC_WorldStatic, ECR_Block);
 
-	KunaiCollision->SetNotifyRigidBodyCollision(true); // OnHit ‚É•K{
-	KunaiCollision->SetGenerateOverlapEvents(false);   // Overlap ‚ÍŽg‚í‚È‚¢
+	KunaiCollision->SetNotifyRigidBodyCollision(true); // OnHit ï¿½É•Kï¿½{
+	KunaiCollision->SetGenerateOverlapEvents(false);   // Overlap ï¿½ÍŽgï¿½ï¿½È‚ï¿½
 
-	// ‚·‚è”²‚¯–hŽ~ (‚‘¬Projectile‚É•K{)
+	// ï¿½ï¿½ï¿½è”²ï¿½ï¿½ï¿½hï¿½~ (ï¿½ï¿½ï¿½ï¿½Projectileï¿½É•Kï¿½{)
 	KunaiCollision->BodyInstance.bUseCCD = true;
 
 

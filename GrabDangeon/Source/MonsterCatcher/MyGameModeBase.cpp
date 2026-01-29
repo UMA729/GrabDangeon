@@ -8,6 +8,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/PlayerStart.h"
+#include "InGameHUD.h"
+#include "InGamePlayerController.h"
 
 AMyGameModeBase::AMyGameModeBase()
 {
@@ -18,6 +20,8 @@ AMyGameModeBase::AMyGameModeBase()
 		DefaultPawnClass = PlayerBPClass.Class;
 		PlayerClass = PlayerBPClass.Class;
 	}
+	HUDClass = AInGameHUD::StaticClass();
+	PlayerControllerClass = AInGamePlayerController::StaticClass();
 }
 
 void AMyGameModeBase::BeginPlay()
@@ -40,7 +44,7 @@ void AMyGameModeBase::BeginPlay()
 void AMyGameModeBase::KillPlayer(AMyCharacter* Player)
 {
 
-	//Player‚ð”jŠü
+	//Playerï¿½ï¿½jï¿½ï¿½
 	Player->Destroy();
 
 	TArray<AActor*> Enemies;
@@ -59,7 +63,7 @@ void AMyGameModeBase::KillPlayer(AMyCharacter* Player)
 	}
 
 
-	//Respawn‚ðs‚¤
+	//Respawnï¿½ï¿½sï¿½ï¿½
 	RespawnPlayer();
 }
 
@@ -70,7 +74,7 @@ void AMyGameModeBase::RespawnPlayer()
 	FActorSpawnParameters SpawnInfo;
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 	
-	// BPƒNƒ‰ƒX‚©‚ç¶¬
+	// BPï¿½Nï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ç¶ï¿½ï¿½
 	AMyCharacter* NewPlayer = GetWorld()->SpawnActor<AMyCharacter>(PlayerClass, SpawnTransform, SpawnInfo);
 	if (NewPlayer)
 	{

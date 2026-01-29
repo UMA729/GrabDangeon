@@ -2,7 +2,7 @@
 
 
 #include "AttractFloorActor.h"
-#include "TimerManager.h" // â‘Î•K—v
+#include "TimerManager.h" // ï¿½ï¿½Î•Kï¿½v
 
 // Sets default values
 AAttractFloorActor::AAttractFloorActor()
@@ -18,7 +18,7 @@ AAttractFloorActor::AAttractFloorActor()
 
 	move_speed = 100.0f;
 
-	// ƒvƒŒƒCƒ„[‚ðæ‚¹‚Ä‚àŠŠ‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½æ‚¹ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
 	AttractObj->SetMobility(EComponentMobility::Movable);
 	AttractObj->SetSimulatePhysics(false);
 	AttractObj->SetEnableGravity(false);

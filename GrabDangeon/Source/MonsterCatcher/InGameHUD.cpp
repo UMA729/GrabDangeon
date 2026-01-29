@@ -7,53 +7,75 @@
 #include "Blueprint/UserWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 
+void AInGameHUD::BeginPlay()
+{
+	// WidgetBlueprintã®Classã‚’å–å¾—ã™ã‚‹
+	FString PauseWidgetPath = TEXT("/Game/UI/BluePrint/BP_PauseWidget.BP_PauseWidget_C");
+	TSubclassOf<UUserWidget> PauseWidgetClass = TSoftClassPtr<UUserWidget>(FSoftObjectPath(*PauseWidgetPath)).LoadSynchronous();
+
+	// PlayerControllerã‚’å–å¾—ã™ã‚‹
+	APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+
+	if (PauseWidgetClass && PlayerController)
+	{
+		// Statusè¡¨ç¤ºç”¨ã®Widgetã‚’ä½œæˆã™ã‚‹
+		PauseWidget = UWidgetBlueprintLibrary::Create(GetWorld(), PauseWidgetClass, PlayerController);
+
+		// Pauseãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’æŠ˜ã‚ŠãŸãŸã¿çŠ¶æ…‹ã«ã™ã‚‹
+		PauseWidget->SetVisibility(ESlateVisibility::Collapsed);
+
+		// Viewportã«è¿½åŠ ã™ã‚‹
+		PauseWidget->AddToViewport(1);
+	}
+
+}
+
 void AInGameHUD::DispPause(const bool IsPause)
 {
+	// PlayerControllerã‚’å–å¾—ã™ã‚‹
 	APlayerController* PlayerController = GetOwningPlayerController();
-
 
 	if (IsPause)
 	{
-		// Pauseƒƒjƒ…[‚ğ•\¦‚·‚é
-
-		// Pauseƒƒjƒ…[‚ğ•\¦‚·‚é
+		// Pauseãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹
 		PauseWidget->SetVisibility(ESlateVisibility::Visible);
 
-		// UIƒ‚[ƒh‚Éİ’è‚·‚é
+		// UIãƒ¢ãƒ¼ãƒ‰ã«è¨­å®šã™ã‚‹
 		UWidgetBlueprintLibrary::SetInputMode_UIOnlyEx(PlayerController, PauseWidget, EMouseLockMode::DoNotLock, false);
 
-		// Game‚ğPauseó‘Ô‚É‚·‚é
+		// Gameã‚’PauseçŠ¶æ…‹ã«ã™ã‚‹
 		UGameplayStatics::SetGamePaused(GetWorld(), true);
 
-		// MouseƒJ[ƒ\ƒ‹‚ğ•\¦‚·‚é
+		// Mouseã‚«ãƒ¼ã‚½ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹
 		PlayerController->SetShowMouseCursor(true);
 	}
 	else
 	{
-		// Pauseó‘Ô‚ğ‰ğœ‚·‚é
+		// PauseçŠ¶æ…‹ã‚’è§£é™¤ã™ã‚‹
 
-		// Game‚ÌPauseó‘Ô‚ğ‰ğœ‚·‚é
+		// Gameã®PauseçŠ¶æ…‹ã‚’è§£é™¤ã™ã‚‹
 		UGameplayStatics::SetGamePaused(GetWorld(), false);
 
-		// MouseƒJ[ƒ\ƒ‹‚ğ”ñ•\¦‚É‚·‚é
+		// Mouseã‚«ãƒ¼ã‚½ãƒ«ã‚’éè¡¨ç¤ºã«ã™ã‚‹
 		PlayerController->SetShowMouseCursor(false);
 
-		// Game‚ÌInputó‘Ô‚É–ß‚·
+		// Gameã®InputçŠ¶æ…‹ã«æˆ»ã™
 		UWidgetBlueprintLibrary::SetInputMode_GameOnly(PlayerController, false);
 
-		// Pauseƒƒjƒ…[‚ğÜ‚è‚½‚½‚İó‘Ô‚É‚·‚é
+		// Pauseãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’æŠ˜ã‚ŠãŸãŸã¿çŠ¶æ…‹ã«ã™ã‚‹
 		PauseWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
+
 }
 
 void AInGameHUD::OpenLevel(const FName LevelName)
 {
-	// Level‚ğLoad‚·‚é
+	// Levelï¿½ï¿½Loadï¿½ï¿½ï¿½ï¿½
 	UGameplayStatics::OpenLevel(GetWorld(), LevelName);
 }
 
 void AInGameHUD::QuitGame()
 {
-	// ƒQ[ƒ€‚ğI—¹‚·‚é
+	// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	UKismetSystemLibrary::QuitGame(GetWorld(), GetOwningPlayerController(), EQuitPreference::Quit, false);
 }

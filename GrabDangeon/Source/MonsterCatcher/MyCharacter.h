@@ -36,11 +36,11 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
 	
-	/**OlÌ‹“_—pƒJƒƒ‰*/
+	/**ï¿½Oï¿½lï¿½Ìï¿½ï¿½_ï¿½pï¿½Jï¿½ï¿½ï¿½ï¿½*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* ThirdPersonCamera;
 
-	/**ˆêlÌ‹“_—pƒJƒƒ‰*/
+	/**ï¿½ï¿½lï¿½Ìï¿½ï¿½_ï¿½pï¿½Jï¿½ï¿½ï¿½ï¿½*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCamera;
 
@@ -77,10 +77,10 @@ public:
 	class UCableComponent*GrappleCable;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
-	bool isGrappling;	//ƒOƒ‰ƒbƒvƒ‹ƒtƒ‰ƒO
+	bool isGrappling;	//ï¿½Oï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
-	bool bIsFiringGrapple; // ƒP[ƒuƒ‹‚ğL‚Î‚µ‚Ä‚¢‚éÅ’†
+	bool bIsFiringGrapple; // ï¿½Pï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½Lï¿½Î‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Å’ï¿½
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
 	bool isAttacking;
@@ -88,17 +88,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* GrappleAnchor;
 
-	bool isPers;		//‹“_ƒtƒ‰ƒO
-	bool isRunning;		//ƒ_ƒbƒVƒ…ƒtƒ‰ƒO
+	bool isPers;		//ï¿½ï¿½ï¿½_ï¿½tï¿½ï¿½ï¿½O
+	bool isRunning;		//ï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
 
-	// Grappleó‘Ô
-	FVector GrappleStart;  // ƒŒƒC”­ËŠJnˆÊ’u
-	FVector CableStart;		//ƒP[ƒuƒ‹”­ËˆÊ’u
-	FVector GrappleDir;    // ƒP[ƒuƒ‹”­Ë•ûŒü
+	// Grappleï¿½ï¿½ï¿½
+	FVector GrappleStart;  // ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ËŠJï¿½nï¿½Ê’u
+	FVector CableStart;		//ï¿½Pï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ËˆÊ’u
+	FVector GrappleDir;    // ï¿½Pï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½Ë•ï¿½ï¿½ï¿½
 	FVector GrabPoint;
 	float InitialCableLength;
-	float CurrentCableLength; // ƒP[ƒuƒ‹‚ÌŒ»İ’·‚³
-	float TargetCableLength;  // ƒP[ƒuƒ‹‚Ì–Ú•W’·‚³
+	float CurrentCableLength; // ï¿½Pï¿½[ï¿½uï¿½ï¿½ï¿½ÌŒï¿½ï¿½İ’ï¿½ï¿½ï¿½
+	float TargetCableLength;  // ï¿½Pï¿½[ï¿½uï¿½ï¿½ï¿½Ì–Ú•Wï¿½ï¿½ï¿½ï¿½
 	float Distance;
 
 	float HP;
@@ -112,10 +112,10 @@ public:
 
 	UMyGameInstance* GameInstance;
 
-	// ƒŒƒC‚ÌŒ»İˆÊ’uiƒP[ƒuƒ‹æ’[j
+	// ï¿½ï¿½ï¿½Cï¿½ÌŒï¿½ï¿½İˆÊ’uï¿½iï¿½Pï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½[ï¿½j
 	FVector GrappleTip;
 
-	// ƒŒƒC‚ª–½’†‚µ‚½‚©
+	// ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool bHasHitTarget = false;
 
 	void Damage(float damage);
