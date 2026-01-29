@@ -85,6 +85,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
 	bool isAttacking;
 
+	UPROPERTY()
+	USceneComponent* CableStartPoint;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* GrappleAnchor;
 
