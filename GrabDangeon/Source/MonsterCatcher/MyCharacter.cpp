@@ -51,9 +51,16 @@ AMyCharacter::AMyCharacter()
 	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCamera->SetupAttachment(CameraBoom); // 頭のSocketにくっつける想定
 
+	CableStartPoint = CreateDefaultSubobject<USceneComponent>(TEXT("CableStartPoint"));
+	CableStartPoint->SetupAttachment(FirstPersonCamera);
+
+	// カメラ右横から出す
+	CableStartPoint->SetRelativeLocation(FVector(30.f, 20.f, -10.f));
+
+
 	//グラップルケーブル
 	GrappleCable = CreateDefaultSubobject<UCableComponent>(TEXT("GrappleCable"));
-	GrappleCable->SetupAttachment(GetMesh(), TEXT("RightHand"));
+	GrappleCable->SetupAttachment(CableStartPoint);
 	GrappleCable->SetVisibility(false);
 	
 	//GrappleCable->bEnableStiffness = true;	//張力を有効
