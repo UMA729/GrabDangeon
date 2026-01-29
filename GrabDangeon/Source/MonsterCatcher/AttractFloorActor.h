@@ -24,10 +24,13 @@ public:
 	UStaticMeshComponent* AttractObj;
 
 	UPROPERTY(EditAnywhere, Category = "Attract")
+	FVector MoveOffset = FVector(0, 500, 0);
+
+	UPROPERTY(EditAnywhere, Category = "Attract")
 	float move_speed;
 
 	UPROPERTY(EditAnywhere, Category = "Attract")
-	FVector MoveOffset = FVector(0, 500, 0);
+	float back_time = 1.0f;
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,7 +47,6 @@ public:
 private:
 	FVector ori_pos;
 	FTimerHandle WaitTimerHandle;
-	float back_time = 1.0f;
 	bool EndLocation;
 	bool isMoving;
 };
