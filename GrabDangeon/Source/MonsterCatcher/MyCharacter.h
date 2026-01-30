@@ -27,23 +27,24 @@ public:
 	AMyCharacter();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category=knife)
-	TSubclassOf<AThrowKnifeActor>KnifeClass;
+	TSubclassOf<AThrowKnifeActor>KnifeClass;//ナイフクラス
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Montage")
-	UAnimMontage* FireMontage;
+	UAnimMontage* RopeMontage;//ロープを投げるときのアニメモンタージュ
 
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	USpringArmComponent* CameraBoom;
+	USpringArmComponent* CameraBoom;//カメラの長さなどを変えるために便利
 	
 	/**�O�l�̎��_�p�J����*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* ThirdPersonCamera;
+	UCameraComponent* ThirdPersonCamera;//三人称カメラ
 
 	/**��l�̎��_�p�J����*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* FirstPersonCamera;
+	UCameraComponent* FirstPersonCamera;//一人称カメラ
 
+	//入力アクション(マッピング)------------------------
 	/**Input Mapping Context*/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
@@ -72,6 +73,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* ThrowAction;
+	//-----------------------------------------------------
 
 	//効果音---------------------------------
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Sound, meta = (AllowPrivateAccess = "true"))
@@ -80,52 +82,53 @@ public:
 	USoundBase* KnifeSound;//ナイフ発射音
 	//---------------------------------------
 
+	//ロープの描画に使う
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
 	class UCableComponent*GrappleCable;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
-	bool isGrappling;	//�O���b�v���t���O
+	bool isGrappling;	//現在スイング中
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
-	bool bIsFiringGrapple; // �P�[�u����L�΂��Ă���Œ�
+	bool bIsFiringGrapple; // 現在ロープケーブルを伸ばしている
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
-	bool isAttacking;
+	bool isAttacking;	//攻撃中
 
 	UPROPERTY()
-	USceneComponent* CableStartPoint;
+	USceneComponent* CableStartPoint;//ケーブルが描写される地点
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Grapple, meta = (AllowPrivateAccess = "true"))
-	USceneComponent* GrappleAnchor;
+	USceneComponent* GrappleAnchor;//レイがぶつかった地点とロープを接続させる
 
-	bool isPers;		//���_�t���O
-	bool isRunning;		//�_�b�V���t���O
+	bool isPers;		//視点フラグ
+	bool isRunning;		//走っているかどうか
 
-	// Grapple���
-	FVector GrappleStart;  // ���C���ˊJ�n�ʒu
-	FVector CableStart;		//�P�[�u�����ˈʒu
-	FVector GrappleDir;    // �P�[�u�����˕���
-	FVector GrabPoint;
-	float InitialCableLength;
-	float CurrentCableLength; // �P�[�u���̌��ݒ���
-	float TargetCableLength;  // �P�[�u���̖ڕW����
-	float Distance;
+	// Grappleの処理に使う
+	FVector GrappleStart;	// レイ発射開始地点
+	FVector CableStart;		// ロープが出る位置
+	FVector GrappleDir;		// ロープが発射される方向
+	FVector GrabPoint;		// ロープがついた位置を保存する(動く天井に追従させるために必要)
+	float InitialCableLength; // 
+	float CurrentCableLength; // 現在のロープケーブルの長さ
+	float TargetCableLength;  // ケーブルの目標への長さ
+	float Distance;			  // ロープの縮む長さ
 
-	float HP;
+	float HP;				//主人公HP
 
 	int32 key_count;
 
 	UPROPERTY(EditAnywhere, Category = "UI")
-	TSubclassOf<UUserWidget> UIWidgetClass;
+	TSubclassOf<UUserWidget> UIWidgetClass;	//HPや鍵の数など
 
-	UUI_UserWidget* MainWidgetInstance;
+	UUI_UserWidget* MainWidgetInstance;	//UIウィジェットを保管する
 
-	UMyGameInstance* GameInstance;
+	UMyGameInstance* GameInstance;		//ゲーム全体のステータス
 
-	// ���C�̌��݈ʒu�i�P�[�u����[�j
+	// レイの現在位置(ロープケーブルの先端)
 	FVector GrappleTip;
 
-	// ���C������������
+	// ターゲットにヒットしているかどうか
 	bool bHasHitTarget = false;
 
 	void Damage(float damage);
