@@ -209,7 +209,6 @@ void AMyCharacter::Tick(float DeltaTime)
 				GimmickParams
 			);
 
-			//--------------追加--------------------------
 			// 伸ばす予定の先端位置
 			if (!bHit && !gHit)
 			{
@@ -240,10 +239,9 @@ void AMyCharacter::Tick(float DeltaTime)
 
 					gHit = false;            // 天井にヒットしていない扱いに
 					bHit = false;            // 天井にヒットしていない扱いに
-					return;                         // ★ここで処理終了が重要！
+					return;                         //ここで処理終了が重要！
 				}
 			}
-			//---------------------------------------------
 
 			if (bHit)
 			{
@@ -605,11 +603,12 @@ void AMyCharacter::StopGrapple(const FInputActionValue& Value)
 
 void AMyCharacter::Fire(const FInputActionValue& Value)
 {
-	
-
 	if (KnifeClass != nullptr)
 	{
 		UWorld* const World = GetWorld();
+
+		if (KnifeSound != nullptr)
+			UGameplayStatics::PlaySoundAtLocation(this, KnifeSound, GetActorLocation());
 
 		if (World != nullptr)
 		{
