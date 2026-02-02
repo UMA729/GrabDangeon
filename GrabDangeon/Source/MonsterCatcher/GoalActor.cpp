@@ -92,6 +92,11 @@ void AGoalActor::OpenGoal()
 	isGoal = true;
 	GoalText->SetActorHiddenInGame(false);
 
+	if (Door)
+	{
+		Door->OpenDoor();
+	}
+
 	for (int32 i = 0; i < GimmickActor.Num(); ++i)
 	{
 

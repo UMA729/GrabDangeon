@@ -438,21 +438,21 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 	if (UEnhancedInputComponent* EnhancedInputConponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EnhancedInputConponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);				//ジャンプ
-		EnhancedInputConponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);		//ジャンプ停止
+		EnhancedInputConponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);					//ジャンプ
+		EnhancedInputConponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);			//ジャンプ停止
 																														
-		EnhancedInputConponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);			//移動
+		EnhancedInputConponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);				//移動
 																														
-		EnhancedInputConponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);			//視点移動
+		EnhancedInputConponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);				//視点移動
 																																																											
 		//EnhancedInputConponent->BindAction(PersAction, ETriggerEvent::Started, this, &AMyCharacter::Pers);				//視点切り替え
 																														
 		//EnhancedInputConponent->BindAction(RunAction, ETriggerEvent::Triggered, this, &AMyCharacter::Run);				//ダッシュ
-		//EnhancedInputConponent->BindAction(RunAction, ETriggerEvent::Completed, this, &AMyCharacter::StopRun);
+		//EnhancedInputConponent->BindAction(RunAction, ETriggerEvent::Completed, this, &AMyCharacter::StopRun);			//ダッシュ停止
 
-		EnhancedInputConponent->BindAction(GrappleAction, ETriggerEvent::Started, this, &AMyCharacter::Grappling);			//ダッシュ停止
-		EnhancedInputConponent->BindAction(ThrowAction, ETriggerEvent::Started, this, &AMyCharacter::Fire);			//ダッシュ停止
-		//EnhancedInputConponent->BindAction(GrappleAction, ETriggerEvent::Completed, this, &AMyCharacter::StopGrapple);			//ダッシュ停止
+		EnhancedInputConponent->BindAction(GrappleAction, ETriggerEvent::Started, this, &AMyCharacter::Grappling);			//ロープ発射
+		EnhancedInputConponent->BindAction(ThrowAction, ETriggerEvent::Started, this, &AMyCharacter::Fire);					//ナイフ発射
+		//EnhancedInputConponent->BindAction(GrappleAction, ETriggerEvent::Completed, this, &AMyCharacter::StopGrapple);	//ロープ停止
 
 
 	}

@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
 #include "GoalActor.generated.h"
+#include "DoorActor.h"
 
 class UStaticMeshComponent;
 class USphereComponent;
@@ -27,6 +28,9 @@ public:
 	TSoftObjectPtr<UWorld> LoadLevel;
 	UPROPERTY(EditAnywhere, Category = Enemy, meta = (AllowPrivateAccess = "true"))
 	bool isGimmickGoal;
+
+	UPROPERTY(EditAnywhere)
+	ADoorActor* Door;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<AActor*> GimmickActor;
