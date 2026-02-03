@@ -23,7 +23,9 @@ void ADoorActor::OpenDoor()
 	{
 		if (UDoorAnimInstance* DoorAnim = Cast<UDoorAnimInstance>(AnimInstance))
 		{
+			UE_LOG(LogTemp, Warning, TEXT("open the door"));
 			DoorAnim->bIsOpen = true;
+			DoorMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		}
 	}
 }

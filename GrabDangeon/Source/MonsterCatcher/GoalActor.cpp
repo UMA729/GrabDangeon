@@ -12,7 +12,6 @@ AGoalActor::AGoalActor()
 	PrimaryActorTick.bCanEverTick = true;
 
 	
-	GoalText = CreateDefaultSubobject<AActor>(TEXT("GoalText"));
 
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
 	RootComponent = DefaultSceneRoot;
@@ -37,19 +36,17 @@ void AGoalActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (!GoalText)
-	{
-		return;
-	}
 
-	if (isGimmickGoal&&GoalText)
-		GoalText->SetActorHiddenInGame(true);
+	if (isGimmickGoal)
+	{
+		isGoal = false;
+	}
 	else
 		isGoal = true;
 
 	ActorIndex.Empty();
 	ActorIndex.Reserve(GimmickActor.Num());
-	for (AActor * Gimmick:GimmickActor)
+	for (AActor* Gimmick : GimmickActor)
 	{
 		if (!Gimmick) continue;
 
@@ -59,38 +56,21 @@ void AGoalActor::BeginPlay()
 		Gimmick->SetActorEnableCollision(false);
 		Gimmick->SetActorTickEnabled(false);
 	}
-
-	StartLocation = GoalText->GetActorLocation();
-	StartRotate = GoalText->GetActorRotation();
 }
 
 void AGoalActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!GoalText)
-	{
-		return;
-	}
-
-	if (GoalText && isGoal)
-	{
-		FRotator GoalRatation = StartRotate;
-		float Time = GetWorld()->GetTimeSeconds();
-		GoalRatation.Yaw += FMath::Sin(Time * FloatSpeed) * FloatAmplitude;
-		GoalText->SetActorRotation(GoalRatation);
-
-		FVector GoalLocation = StartLocation;
-		GoalLocation.Z += FMath::Sin(Time * FloatSpeed) * FloatAmplitude;
-		GoalText->SetActorLocation(GoalLocation);
-	}
 }
 
 void AGoalActor::OpenGoal()
 {
 	UE_LOG(LogTemp, Warning, TEXT("‚Í‚¢‚è‚Ü‚µ‚½"));
+	//isGoal = true;
+	//GoalText->SetActorHiddenInGame(false);
+
 	isGoal = true;
-	GoalText->SetActorHiddenInGame(false);
 
 	if (Door)
 	{

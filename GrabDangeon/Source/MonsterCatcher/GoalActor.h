@@ -5,11 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
-#include "GoalActor.generated.h"
+#include "Components/BoxComponent.h"
 #include "DoorActor.h"
+#include "GoalActor.generated.h"
 
 class UStaticMeshComponent;
 class USphereComponent;
+class UBoxComponent;
 
 UCLASS()
 class MONSTERCATCHER_API AGoalActor : public AActor
@@ -35,8 +37,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<AActor*> GimmickActor;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	AActor* GoalText;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AActor* LeverActor;
