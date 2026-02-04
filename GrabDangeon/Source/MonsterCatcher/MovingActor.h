@@ -22,16 +22,16 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Platform")
 	UStaticMeshComponent* PlatformMesh;
 
-	// ˆÚ“®—Ê
+	// ï¿½Ú“ï¿½ï¿½ï¿½
 	UPROPERTY(EditAnywhere, Category = "Platform")
 	FVector MoveOffset = FVector(0, 500, 0);
 
-	// ˆÚ“®ƒXƒs[ƒh
+	// ï¿½Ú“ï¿½ï¿½Xï¿½sï¿½[ï¿½h
 	UPROPERTY(EditAnywhere, Category = "Platform")
 	float MoveSpeed = 100.0f;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
-	float WaitTime = 2.0f; // 2•b’â~‚È‚Ç
+	float WaitTime = 2.0f; // 2ï¿½bï¿½ï¿½~ï¿½È‚ï¿½
 
 
 private:

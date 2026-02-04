@@ -15,7 +15,7 @@ AItemActor::AItemActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// RootComponent ‚ğì‚é
+	// RootComponent ï¿½ï¿½ï¿½ï¿½
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
 	RootComponent = DefaultSceneRoot;
 
@@ -48,12 +48,12 @@ void AItemActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//ƒAƒCƒeƒ€‰ñ“]‹““®
+	//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½
 	FRotator ItemRatation = GetActorRotation();
 	ItemRatation.Yaw += RotationSpeed * DeltaTime;
 	SetActorRotation(ItemRatation);
 
-	//ƒAƒCƒeƒ€ã‰ºˆÚ“®
+	//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ã‰ºï¿½Ú“ï¿½
 	FVector ItemLocation = StartLocation;
 	float Time = GetWorld()->GetTimeSeconds();
 	ItemLocation.Z += FMath::Sin(Time * FloatSpeed) * FloatAmplitude;
@@ -65,10 +65,13 @@ void AItemActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Oth
 
 	if (AMyCharacter* character = Cast<AMyCharacter>(OtherActor))
 	{
-
+		if (GetSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, GetSound, GetActorLocation());
+		}
 		character->KeyAdd();
 
-		// ƒCƒ“ƒxƒ“ƒgƒŠ’Ç‰Á‚Æ‚©‚±‚±‚Éc
+		// ï¿½Cï¿½ï¿½ï¿½xï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Ç‰ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éc
 
 		Destroy();
 	}

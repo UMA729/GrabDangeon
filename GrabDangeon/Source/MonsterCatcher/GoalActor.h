@@ -24,12 +24,17 @@ public:
 
 	// Sets default values for this actor's properties
 	AGoalActor();
-	/** ‘JˆÚ‚·‚éLevel‚ÌSoftQÆ */
+	/** ï¿½Jï¿½Ú‚ï¿½ï¿½ï¿½Levelï¿½ï¿½Softï¿½Qï¿½ï¿½ */
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Default")
 	TSoftObjectPtr<UWorld> LoadLevel;
 	UPROPERTY(EditAnywhere, Category = Enemy, meta = (AllowPrivateAccess = "true"))
 	bool isGimmickGoal;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* ButtonSound; //ãƒœã‚¿ãƒ³ãƒ—ãƒƒã‚·ãƒ¥éŸ³
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* GoalSound; //ã‚´ãƒ¼ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³éŸ³
 
 	UPROPERTY(EditAnywhere)
 	ADoorActor* Door;
@@ -54,25 +59,25 @@ private:
 
 	UFUNCTION()
 	void OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-	/** ÚG”»’è—p‚ÌCollision : Sphere */
+	/** ï¿½ÚGï¿½ï¿½ï¿½ï¿½pï¿½ï¿½Collision : Sphere */
 	UPROPERTY(VisibleAnywhere, Category = Goal, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<USphereComponent> Sphere;
 
-	/** Goal—p‚ÌStaticMesh : Goal */
+	/** Goalï¿½pï¿½ï¿½StaticMesh : Goal */
 	UPROPERTY(VisibleAnywhere, Category = Goal, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UStaticMeshComponent> Goal;
 
 
-	// •‚—Vƒpƒ‰ƒ[ƒ^
+	// ï¿½ï¿½ï¿½Vï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
 	UPROPERTY(EditAnywhere, Category = "Floating")
-	float FloatAmplitude = 20.0f;  // ã‰º‚Ì•i‚‚³j
+	float FloatAmplitude = 20.0f;  // ï¿½ã‰ºï¿½Ì•ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½j
 
 	UPROPERTY(EditAnywhere, Category = "Floating")
-	float FloatSpeed = 2.0f;       // ã‰º‚Ì‘¬‚³
+	float FloatSpeed = 2.0f;       // ï¿½ã‰ºï¿½Ì‘ï¿½ï¿½ï¿½
 
-	// ‰ñ“]ƒpƒ‰ƒ[ƒ^
+	// ï¿½ï¿½]ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
 	UPROPERTY(EditAnywhere, Category = "Floating")
-	float RotationSpeed = 45.0f;   // 1•b‚ ‚½‚è‚Ì‰ñ“]Šp“xi“xj
+	float RotationSpeed = 45.0f;   // 1ï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½]ï¿½pï¿½xï¿½iï¿½xï¿½j
 
 	TArray<FVector> ActorIndex;
 };

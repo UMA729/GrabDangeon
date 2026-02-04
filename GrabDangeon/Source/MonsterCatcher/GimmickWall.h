@@ -19,6 +19,11 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* WallMesh;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* LockSound; //鍵解除音
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* WallSound; //壁が動く音
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

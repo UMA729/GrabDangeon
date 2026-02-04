@@ -16,17 +16,17 @@ AGoalActor::AGoalActor()
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
 	RootComponent = DefaultSceneRoot;
 
-	// SphereCollision‚ğ’Ç‰Á‚·‚é
+	// SphereCollisionï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½
 	Sphere = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 
 	Sphere->SetupAttachment(RootComponent);
-	// Radius‚ğİ’è‚·‚é
+	// Radiusï¿½ï¿½İ’è‚·ï¿½ï¿½
 	Sphere->SetSphereRadius(72.0f);
 
-	// OnComponentBeginOverlap‚ğBind‚·‚é
+	// OnComponentBeginOverlapï¿½ï¿½Bindï¿½ï¿½ï¿½ï¿½
 	Sphere->OnComponentBeginOverlap.AddDynamic(this, &AGoalActor::OnSphereBeginOverlap);
 
-	// StaticMeshComponent‚ğ’Ç‰Á‚µARootComponent‚Éİ’è‚·‚é
+	// StaticMeshComponentï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ARootComponentï¿½Éİ’è‚·ï¿½ï¿½
 	Goal = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	Goal->SetupAttachment(RootComponent);
 
@@ -66,7 +66,7 @@ void AGoalActor::Tick(float DeltaTime)
 
 void AGoalActor::OpenGoal()
 {
-	UE_LOG(LogTemp, Warning, TEXT("‚Í‚¢‚è‚Ü‚µ‚½"));
+	UE_LOG(LogTemp, Warning, TEXT("ï¿½Í‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½"));
 	//isGoal = true;
 	//GoalText->SetActorHiddenInGame(false);
 
@@ -75,6 +75,16 @@ void AGoalActor::OpenGoal()
 	if (Door)
 	{
 		Door->OpenDoor();
+
+		if (ButtonSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, ButtonSound, GetActorLocation());
+		}
+		if (GoalSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, GoalSound, Door->GetActorLocation());
+		}
+		
 	}
 
 	for (int32 i = 0; i < GimmickActor.Num(); ++i)
@@ -95,10 +105,10 @@ void AGoalActor::OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComp, AActo
 {
 	if (isGoal)
 	{
-		// ÚG‚µ‚½Actor‚ªBallPlayer‚©”»’è‚·‚é
+		// ï¿½ÚGï¿½ï¿½ï¿½ï¿½Actorï¿½ï¿½BallPlayerï¿½ï¿½ï¿½ï¿½ï¿½è‚·ï¿½ï¿½
 		if (const AMyCharacter* player = Cast<AMyCharacter>(OtherActor))
 		{
-			// ‘JˆÚ‚·‚éLevel‚ğLoad‚·‚é
+			// ï¿½Jï¿½Ú‚ï¿½ï¿½ï¿½Levelï¿½ï¿½Loadï¿½ï¿½ï¿½ï¿½
 			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LoadLevel);
 		}
 	}

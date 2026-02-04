@@ -37,6 +37,14 @@ void AGimmickWall::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 
 			if (GameInstance->keycount > 0)
 			{
+				if (LockSound != nullptr)
+				{
+					UGameplayStatics::PlaySoundAtLocation(this, LockSound, GetActorLocation());
+				}
+				if (WallSound != nullptr)
+				{
+					UGameplayStatics::PlaySoundAtLocation(this, WallSound, GetActorLocation());
+				}
 				isHit = true;
 				isMoving = true;
 				character->KeySub();
@@ -65,7 +73,7 @@ void AGimmickWall::Tick(float DeltaTime)
 		MoveSoFar += MoveStep;
 		if (MoveSoFar >= MoveDistance)
 		{
-			isMoving = false;//ã¸I—¹
+			isMoving = false;//ï¿½ã¸ï¿½Iï¿½ï¿½
 		}
 	}
 }

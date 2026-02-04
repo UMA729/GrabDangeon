@@ -27,6 +27,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = Enemy, meta = (AllowPrivateAccess = "true"))
 	bool isSpawnDest;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* ButtonSound; //ボタンプッシュ音
+
 	bool StartSpawn = false;
 
 	UPROPERTY(EditAnywhere, Category = "Gimmick")

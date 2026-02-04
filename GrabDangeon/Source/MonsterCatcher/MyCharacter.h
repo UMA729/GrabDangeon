@@ -76,10 +76,12 @@ public:
 	//-----------------------------------------------------
 
 	//効果音---------------------------------
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Sound, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
 	USoundBase* RopeSound;//ロープ発射音
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Sound, meta = (AllowPrivateAccess = "true"))
-	USoundBase* KnifeSound;//ナイフ発射音
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* ThrowSound;//ナイフ発射音
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* BGM;//BGM
 	//---------------------------------------
 
 	//ロープの描画に使う

@@ -32,6 +32,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Attract")
 	float back_time = 1.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* AttractSound;//ロープ発射音
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

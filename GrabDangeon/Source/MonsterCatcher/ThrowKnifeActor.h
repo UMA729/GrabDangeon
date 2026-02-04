@@ -14,13 +14,14 @@ class MONSTERCATCHER_API AThrowKnifeActor : public AActor
 {
 	GENERATED_BODY()
 
-	//“Š‚Ä‚«•Ší“–‚½‚è”»’è
+	//ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½í“–ï¿½ï¿½ï¿½è”»ï¿½ï¿½
 	UPROPERTY(VisibleAnywhere, Category = ThrowWeapon, meta = (AllowPrivateAccess = "true"))
 	USphereComponent* KunaiCollision;
 	//
 	UPROPERTY(VisibleAnywhere, Category = Movement, meta = (AllowPrivateAccess = "true"))
 	UProjectileMovementComponent* ProjectileMovement;
-
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* KnifeSound;//ãƒŠã‚¤ãƒ•ç™ºå°„éŸ³
 private:
 	float knife_damage;
 

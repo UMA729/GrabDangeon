@@ -15,11 +15,11 @@ class MONSTERCATCHER_API AEnemyAttackingActor : public AActor
 	GENERATED_BODY()
 	
 
-	//ƒ‚ƒfƒ‹ƒƒbƒVƒ…
+	//ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = AI, meta = (AllowPrivateAccess = "true"))
 	USkeletalMeshComponent* BulletMesh;
 
-	//UŒ‚‚Ì”»’è
+	//ï¿½Uï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Action, meta = (AllowPrivateAccess = "true"))
 	USphereComponent* AttackCollision;
 

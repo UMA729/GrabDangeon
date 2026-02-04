@@ -32,24 +32,26 @@ public:
 
 	FVector StartLocation;
 
-	// •Ç‚ÌQÆ
+	// ï¿½Ç‚ÌQï¿½ï¿½
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AActor* TargetWall;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio, meta = (AllowPrivateAccess = "true"))
+	USoundBase* GetSound;//éµå…¥æ‰‹éŸ³
 private:
 	UPROPERTY(VisibleAnywhere, Category = KillVolume, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<USceneComponent> DefaultSceneRoot;
 
-	// •‚—Vƒpƒ‰ƒ[ƒ^
+	// ï¿½ï¿½ï¿½Vï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
 	UPROPERTY(EditAnywhere, Category = "Floating")
-	float FloatAmplitude = 20.0f;  // ã‰º‚Ì•i‚‚³j
+	float FloatAmplitude = 20.0f;  // ï¿½ã‰ºï¿½Ì•ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½j
 
 	UPROPERTY(EditAnywhere, Category = "Floating")
-	float FloatSpeed = 2.0f;       // ã‰º‚Ì‘¬‚³
+	float FloatSpeed = 2.0f;       // ï¿½ã‰ºï¿½Ì‘ï¿½ï¿½ï¿½
 
-	// ‰ñ“]ƒpƒ‰ƒ[ƒ^
+	// ï¿½ï¿½]ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
 	UPROPERTY(EditAnywhere, Category = "Floating")
-	float RotationSpeed = 45.0f;   // 1•b‚ ‚½‚è‚Ì‰ñ“]Šp“xi“xj
+	float RotationSpeed = 45.0f;   // 1ï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½]ï¿½pï¿½xï¿½iï¿½xï¿½j
 
 
 };

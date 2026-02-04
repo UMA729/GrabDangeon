@@ -112,6 +112,8 @@ void AGimmickActor::Disappear(AActor* Floor)
 
 void AGimmickActor::StartGimmick()
 {
+   
+
     CurrentIndex = 0;
     ActiveFloors.Empty();
 
@@ -143,7 +145,7 @@ void AGimmickActor::UpdateGimmick()
         }
         else
         {
-            // ‘S•”Á‚¦‚½‚çŠ®‘SI—¹
+            // ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½çŠ®ï¿½Sï¿½Iï¿½ï¿½
             GetWorldTimerManager().ClearTimer(WaitTimerHandle);
         }
         return;

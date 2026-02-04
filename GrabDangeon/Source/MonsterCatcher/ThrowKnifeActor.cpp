@@ -52,6 +52,10 @@ void AThrowKnifeActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
 
 	if (AEnemyCharacter* EnemyClass = Cast<AEnemyCharacter>(OtherActor))
 	{
+		if (KnifeSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, KnifeSound, EnemyClass->GetActorLocation());
+		}
 		EnemyClass->HP -= knife_damage;
 
 		UE_LOG(LogTemp, Warning, TEXT("EnemyHit"));
