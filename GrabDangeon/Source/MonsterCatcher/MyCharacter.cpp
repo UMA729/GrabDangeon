@@ -309,6 +309,10 @@ void AMyCharacter::Tick(float DeltaTime)
 					}
 					else if (AAttractFloorActor* AttractClass = Cast<AAttractFloorActor>(HitActor))
 					{
+						if (AttractClass->AttractSound != nullptr)
+						{
+							UGameplayStatics::PlaySoundAtLocation(this, AttractClass->AttractSound, GetActorLocation());
+						}
 						AttractClass->StartAttract();
 					}
 				}
