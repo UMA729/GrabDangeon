@@ -28,10 +28,10 @@ private:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> ButtonQuit;
 
-	// ButtonPlay‚ÌOnClickedƒCƒxƒ“ƒg‚ÉŠÖ˜A‚Ã‚¯‚é
+	// ButtonPlayï¿½ï¿½OnClickedï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½ÉŠÖ˜Aï¿½Ã‚ï¿½ï¿½ï¿½
 	UFUNCTION()
 	void OnButtonPlayClicked();
-	// ButtonQuit‚ÌOnClickedƒCƒxƒ“ƒg‚ÉŠÖ˜A‚Ã‚¯‚é
+	// ButtonQuitï¿½ï¿½OnClickedï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½ÉŠÖ˜Aï¿½Ã‚ï¿½ï¿½ï¿½
 	UFUNCTION()
 	void OnButtonQuitClicked();
 };

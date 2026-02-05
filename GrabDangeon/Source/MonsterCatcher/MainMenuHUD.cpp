@@ -11,19 +11,19 @@ void AMainMenuHUD::BeginPlay()
 	FString Path = TEXT("/Game/UI/Title/BP_TitleWidget.BP_TitleWidget_C");
 	TSubclassOf<UUserWidget> WidgetClass = TSoftClassPtr<UUserWidget>(FSoftObjectPath(*Path)).LoadSynchronous();
 
-	// PlayerController‚ðŽæ“¾‚·‚é
+	// PlayerControllerï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
-	// WidgetClass‚ÆPlayerController‚ªŽæ“¾‚Å‚«‚½‚©”»’è‚·‚é
+	// WidgetClassï¿½ï¿½PlayerControllerï¿½ï¿½ï¿½æ“¾ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è‚·ï¿½ï¿½
 	if (WidgetClass && PlayerController)
 	{
-		// Widget‚ðì¬‚·‚é
+		// Widgetï¿½ï¿½ì¬ï¿½ï¿½ï¿½ï¿½
 		UUserWidget* UserWidget = UWidgetBlueprintLibrary::Create(GetWorld(), WidgetClass, PlayerController);
 
-		// Viewport‚É’Ç‰Á‚·‚é
+		// Viewportï¿½É’Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½
 		UserWidget->AddToViewport(0);
 
-		// MouseCursor‚ð•\Ž¦‚·‚é
+		// MouseCursorï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(PlayerController, UserWidget, EMouseLockMode::DoNotLock, true, false);
 		PlayerController->SetShowMouseCursor(true);
 	}

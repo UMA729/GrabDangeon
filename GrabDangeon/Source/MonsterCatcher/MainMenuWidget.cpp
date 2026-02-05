@@ -12,10 +12,10 @@ void UMainMenuWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 
-	// ButtonPlay‚ÌOnClicked‚ÉuOnButtonPlayClickedv‚ğŠÖ˜A‚Ã‚¯‚é
+	// ButtonPlayï¿½ï¿½OnClickedï¿½ÉuOnButtonPlayClickedï¿½vï¿½ï¿½Ö˜Aï¿½Ã‚ï¿½ï¿½ï¿½
 	ButtonPlay->OnClicked.AddUniqueDynamic(this, &UMainMenuWidget::OnButtonPlayClicked);
 
-	// ButtonQuit‚ÌOnClicked‚ÉuOnButtonQuitClickedv‚ğŠÖ˜A‚Ã‚¯‚é
+	// ButtonQuitï¿½ï¿½OnClickedï¿½ÉuOnButtonQuitClickedï¿½vï¿½ï¿½Ö˜Aï¿½Ã‚ï¿½ï¿½ï¿½
 	ButtonQuit->OnClicked.AddUniqueDynamic(this, &UMainMenuWidget::OnButtonQuitClicked);
 }
 
@@ -28,17 +28,17 @@ void UMainMenuWidget::OnButtonPlayClicked()
 	GameInstance->Initialize();
 
 	FName LevelName(*StageTutorial.GetAssetName());
-	// Level01‚ğLoad‚·‚é
+	// Level01ï¿½ï¿½Loadï¿½ï¿½ï¿½ï¿½
 	UGameplayStatics::OpenLevel(GetWorld(), LevelName);
 }
 
 void UMainMenuWidget::OnButtonQuitClicked()
 {
 	UE_LOG(LogTemp, Warning, TEXT("quit push"));
-	// PlayerController‚ğæ“¾‚·‚é
+	// PlayerControllerï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	if (APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0))
 	{
-		// ƒQ[ƒ€‚ğI—¹‚·‚é
+		// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		UKismetSystemLibrary::QuitGame(GetWorld(), PlayerController, EQuitPreference::Quit, false);
 	}
 }
